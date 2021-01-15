@@ -1,0 +1,23 @@
+import Prelude
+
+summ :: [Int] -> Int
+summ [] = 0
+summ (x:xs) = x + summ xs
+
+data List = EmptyList | Cons Int List
+	deriving Show
+sampleList :: List
+sampleList = Cons 1 (Cons 2 (Cons 3 EmptyList))
+
+exampleEmptyList :: List
+exampleEmptyList = EmptyList
+
+sumForList :: List -> Int
+sumForList EmptyList = 0
+sumForList (Cons x xs) = x + sumForList xs
+
+
+remove' :: Int -> List -> List
+remove' _ EmptyList = EmptyList
+remove' e (Cons x lst) | x == e = lst | otherwise = Cons x (remove' e lst)
+
